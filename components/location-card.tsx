@@ -82,7 +82,7 @@ const LocationCard: FunctionComponent<{
             Directions
           </CardButton>
           {canShare && (
-            <CardButton icon={<RiShareLine />} onClick={() => {}}>
+            <CardButton icon={<RiShareLine />} onClick={share}>
               Share
             </CardButton>
           )}

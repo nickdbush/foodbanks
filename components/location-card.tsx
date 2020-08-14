@@ -48,17 +48,19 @@ const LocationCard: FunctionComponent<{
   const canShare = typeof window != "undefined" && "share" in window.navigator;
   const openMap = () => {
     const url = makeMapUrl(coordinates);
-    window.open(url, "_blank", "noopener");
+    window.open(url, "_blank");
   };
   const openDirections = () => {
     const url = makeDirectionsUrl(coordinates);
-    window.open(url, "_blank", "noopener");
+    window.open(url, "_blank");
   };
   const share = () => {
     navigator.share({
       url: window.location.href,
-      title: `Community foodbank at ${name}`,
-      text: address,
+      title: `${name} community food hub`,
+      text: `Community food hub at ${name}\n${address
+        .split(", ")
+        .join(",\n")}\n\n`,
     });
   };
   return (

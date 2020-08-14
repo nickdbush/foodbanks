@@ -81,8 +81,7 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
           .introduction {
             flex-grow: 1;
             margin-left: 16px;
-            position: relative;
-            bottom: 25px;
+            margin-bottom: 25px;
           }
         }
 

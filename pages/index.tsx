@@ -44,7 +44,6 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
         <div className="introduction">
           <h1>Find your local food hub</h1>
           <p>
-            Anybody is welcome at the community foodbanks that{" "}
             <a
               href="https://childrenwithvoices.wixsite.com/london"
               target="_blank"
@@ -52,7 +51,8 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
             >
               Children with Voices
             </a>{" "}
-            runs across East London.
+            runs three food hubs across East London, which are open to
+            everybody.
           </p>
         </div>
       </div>
@@ -75,7 +75,7 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
           .top {
             flex-direction: row;
             align-items: end;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
           }
 
           .introduction {

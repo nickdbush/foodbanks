@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-maps": "node --loader ts-node/esm.mjs --experimental-specifier-resolution=node ./maps"
+    "generate-maps": "ts-node ./maps"
   },
   "dependencies": {
     "next": "9.5.2",

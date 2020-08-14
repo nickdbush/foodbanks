@@ -15,5 +15,12 @@
     "jsx": "preserve"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "maps"]
+  "exclude": ["node_modules", "maps"],
+  "ts-node": {
+    "compilerOptions": {
+      "jsx": "react",
+      "module": "commonjs"
+    },
+    "transpileOnly": true
+  }
 }

@@ -1,6 +1,8 @@
 import osm from "osm-static-maps";
 import fs from "fs";
 import { locations } from "../data/locations";
+import { mapHeight } from "../components/location-card";
+import { minCardWidth } from "../components/stack";
 
 function genJson(coordinates: [number, number]): any {
   // For some reason, OSM takes [long, lat] instead of [lat, long]
@@ -22,10 +24,12 @@ locations
   .forEach(({ filename, coordinates }) => {
     osm({
       geojson: genJson(coordinates),
-      zoom: 15,
+      zoom: 14,
       type: "jpeg",
       imagemin: true,
-      attribution: "",
+      attribution: " ",
+      height: mapHeight,
+      width: minCardWidth * 2,
     })
       .then(save(filename))
       .catch((err) => console.error(filename + ": " + err));

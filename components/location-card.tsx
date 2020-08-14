@@ -99,13 +99,16 @@ const LocationCard: FunctionComponent<{
 
         .container {
           position: relative;
-          max-width: 400px;
+          width: 100%;
         }
 
         .content {
+          height: 100%;
           border-radius: 4px;
           background-color: white;
           overflow: hidden;
+          display: flex;
+          flex-direction: column;
         }
 
         .shadow {
@@ -129,6 +132,7 @@ const LocationCard: FunctionComponent<{
 
         .body {
           padding: var(--padding-y) var(--padding-x);
+          flex-grow: 1;
         }
 
         .name {

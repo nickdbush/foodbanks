@@ -41,26 +41,51 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
     <Page title="Food hubs">
       <div className="top">
         <img src="/kitchen.svg" className="illustration" />
-        <h1>Find your local food hub</h1>
-        <p>
-          Anybody is welcome at the community foodbanks that{" "}
-          <a
-            href="https://childrenwithvoices.wixsite.com/london"
-            target="_blank"
-            rel="noopener"
-          >
-            Children with Voices
-          </a>{" "}
-          runs across East London.
+        <div className="introduction">
+          <h1>Find your local food hub</h1>
+          <p>
+            Anybody is welcome at the community foodbanks that{" "}
+            <a
+              href="https://childrenwithvoices.wixsite.com/london"
+              target="_blank"
+              rel="noopener"
+            >
+              Children with Voices
+            </a>{" "}
+            runs across East London.
+          </p>
+        </div>
+      </div>
+      <div className="bottom">
+        <Stack spacing="24px">{cards}</Stack>
+        <p className="attribution">
+          Base maps and data from OpenStreetMap and OpenStreetMap Foundation
+          <br />© OpenStreetMap contributors
         </p>
       </div>
-      <Stack spacing="24px">{cards}</Stack>
-      <p className="attribution">
-        Base maps and data from OpenStreetMap and OpenStreetMap Foundation
-        <br />© OpenStreetMap contributors
-      </p>
 
       <style jsx>{`
+        .top {
+          margin-bottom: 16px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        @media (min-width: 870px) {
+          .top {
+            flex-direction: row;
+            align-items: end;
+            margin-bottom: 32px;
+          }
+
+          .introduction {
+            flex-grow: 1;
+            margin-left: 16px;
+            position: relative;
+            bottom: 25px;
+          }
+        }
+
         h1 {
           font-size: 3rem;
           line-height: 1.2em;
@@ -69,12 +94,9 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
 
         .illustration {
           width: 100%;
+          max-width: 500px;
           margin-top: 24px;
           margin-bottom: 20px;
-        }
-
-        .top {
-          margin-bottom: 26px;
         }
 
         .attribution {

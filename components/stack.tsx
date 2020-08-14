@@ -1,5 +1,7 @@
 import { FunctionComponent } from "react";
 
+const minCardWidth = 320;
+
 const Stack: FunctionComponent<{ spacing: string }> = ({
   children,
   spacing,
@@ -9,8 +11,21 @@ const Stack: FunctionComponent<{ spacing: string }> = ({
       {children}
 
       <style jsx>{`
-        .container > :global(*:not(:last-child)) {
-          margin-bottom: ${spacing};
+        --min-card-width: 300px;
+
+        .container {
+          display: grid;
+          grid-gap: ${spacing};
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(${minCardWidth}px, 1fr)
+          );
+        }
+
+        @media (max-width: ${minCardWidth * 1.5}px) {
+          .container {
+            grid-template-columns: minmax(0, 1fr);
+          }
         }
       `}</style>
     </div>

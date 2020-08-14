@@ -10,7 +10,10 @@ const Page: FunctionComponent<{ title: string }> = ({ title, children }) => {
       {children}
       <style jsx>{`
         .container {
+          width: 100%;
+          max-width: 1400px;
           padding: 16px;
+          margin: 0 auto;
         }
       `}</style>
     </div>

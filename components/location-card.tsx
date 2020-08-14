@@ -1,6 +1,9 @@
 import { FunctionComponent } from "react";
 import { RiDirectionLine, RiShareLine } from "react-icons/ri";
 import { makeDirectionsUrl, makeMapUrl } from "../utils/map";
+import { minCardWidth } from "./stack";
+
+export const mapHeight = 250;
 
 const CardButton: FunctionComponent<{ icon: any; onClick: () => void }> = ({
   icon,
@@ -67,11 +70,15 @@ const LocationCard: FunctionComponent<{
     <div className="container">
       <div className="shadow"></div>
       <div className="content">
-        <div
-          className="map"
-          style={{ backgroundImage: `url(${mapUrl})` }}
-          onClick={openMap}
-        ></div>
+        <div className="map-container">
+          <img
+            src={mapUrl}
+            className="map"
+            onClick={openMap}
+            width={minCardWidth * 2}
+            height={mapHeight}
+          />
+        </div>
         {/* <Chip colour={isOpen ? "green" : "grey"}>
         {isOpen ? "Open" : "Closed"}
       </Chip> */}
@@ -121,13 +128,24 @@ const LocationCard: FunctionComponent<{
           box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.09);
         }
 
+        .map-container {
+          height: ${mapHeight}px;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
         .map {
           background-color: white;
-          height: 200px;
+          min-width: ${minCardWidth * 2}px;
+          min-height: ${mapHeight}px;
           background-size: cover;
           background-position: center;
           box-shadow: inset 0px -1px 5px rgba(0, 0, 0, 0.06);
           cursor: pointer;
+          object-fit: cover;
+          object-position: center center;
         }
 
         .body {

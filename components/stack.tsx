@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-const minCardWidth = 320;
+export const minCardWidth = 320;
 
 const Stack: FunctionComponent<{ spacing: string }> = ({
   children,

@@ -43,11 +43,11 @@ const CardButton: FunctionComponent<{ icon: any; onClick: () => void }> = ({
 };
 
 const LocationCard: FunctionComponent<{
-  mapUrl: string;
+  mapImage: string;
   name: string;
   address: string;
   coordinates: [number, number];
-}> = ({ name, address, children, mapUrl, coordinates }) => {
+}> = ({ name, address, children, mapImage, coordinates }) => {
   const canShare = typeof window != "undefined" && "share" in window.navigator;
   const openMap = () => {
     const url = makeMapUrl(coordinates);
@@ -72,7 +72,7 @@ const LocationCard: FunctionComponent<{
       <div className="content">
         <div className="map-container">
           <img
-            src={mapUrl}
+            srcSet={`${mapImage}.png 1x, ${mapImage}-2x.png 2x`}
             className="map"
             onClick={openMap}
             width={minCardWidth * 2}
@@ -140,12 +140,11 @@ const LocationCard: FunctionComponent<{
           background-color: white;
           min-width: ${minCardWidth * 2}px;
           min-height: ${mapHeight}px;
-          background-size: cover;
-          background-position: center;
           box-shadow: inset 0px -1px 5px rgba(0, 0, 0, 0.06);
           cursor: pointer;
           object-fit: cover;
           object-position: center center;
+          width: auto;
         }
 
         .body {

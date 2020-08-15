@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-maps": "ts-node ./maps"
+    "generate-maps": "ts-node ./generate-maps"
   },
   "dependencies": {
     "next": "9.5.2",
@@ -19,6 +19,8 @@
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.46",
     "@types/styled-jsx": "^2.2.8",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   }

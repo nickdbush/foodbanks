@@ -19,7 +19,8 @@
   "ts-node": {
     "compilerOptions": {
       "jsx": "react",
-      "module": "commonjs"
+      "module": "commonjs",
+      "target": "ES2019"
     },
     "transpileOnly": true
   }

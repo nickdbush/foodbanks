@@ -29,7 +29,7 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
         key={location.name}
         name={location.name}
         address={[location.address, location.postcode].join(", ")}
-        mapUrl={location.mapUrl}
+        mapImage={location.mapImage}
         coordinates={location.coordinates}
       >
         {address}
@@ -58,10 +58,7 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
       </div>
       <div className="bottom">
         <Stack spacing="24px">{cards}</Stack>
-        <p className="attribution">
-          Base maps and data from OpenStreetMap and OpenStreetMap Foundation
-          <br />© OpenStreetMap contributors
-        </p>
+        <p className="attribution">Maps © Google {new Date().getFullYear()}</p>
       </div>
 
       <style jsx>{`

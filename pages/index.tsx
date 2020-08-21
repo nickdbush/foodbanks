@@ -40,7 +40,7 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
   return (
     <Page title="Food hubs">
       <div className="top">
-        <img src="/kitchen.svg" className="illustration" />
+        <img src="/logo.svg" className="illustration" />
         <div className="introduction">
           <h1>Find your local food hub</h1>
           <p>
@@ -63,36 +63,26 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
 
       <style jsx>{`
         .top {
-          margin-bottom: 16px;
-          display: flex;
-          flex-direction: column;
-        }
-
-        @media (min-width: 870px) {
-          .top {
-            flex-direction: row;
-            align-items: end;
-            margin-bottom: 28px;
-          }
-
-          .introduction {
-            flex-grow: 1;
-            margin-left: 16px;
-            margin-bottom: 25px;
-          }
+          margin-top: 16px;
+          margin-bottom: 30px;
         }
 
         h1 {
-          font-size: 3rem;
-          line-height: 1.2em;
+          font-size: 2rem;
+          line-height: 1.15em;
           margin: 0;
+        }
+
+        p {
+          margin: 0;
+          padding: 0;
+          margin-top: 25px;
         }
 
         .illustration {
           width: 100%;
-          max-width: 500px;
-          margin-top: 24px;
-          margin-bottom: 20px;
+          max-width: 350px;
+          margin-bottom: 30px;
         }
 
         .attribution {

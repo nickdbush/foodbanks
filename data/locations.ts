@@ -51,4 +51,12 @@ export const locations: Location[] = [
     openingTimes: [{ day: Day.Wednesday, opens: "14:00", closes: "16:00" }],
     coordinates: [51.5417, -0.03868],
   },
+  {
+    name: "Prideaux House Community Hall",
+    address: "10 Church Crescent",
+    postcode: "E9 7DL",
+    mapImage: "/images/prideaux",
+    openingTimes: [{ day: Day.Tuesday, opens: "11:30", closes: "15:00" }],
+    coordinates: [51.54087, -0.045549],
+  },
 ];

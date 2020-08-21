@@ -3,6 +3,8 @@ import LocationCard from "../components/location-card";
 import { locations } from "../data/locations";
 import Page from "../components/page";
 import Stack from "../components/stack";
+import Link from "next/link";
+import { printNumber } from "../utils/formatting";
 
 function interleave(array: any[], x: (i: number) => any): any[] {
   const output = [];
@@ -44,15 +46,9 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
         <div className="introduction">
           <h1>Find your local food hub</h1>
           <p>
-            <a
-              href="https://childrenwithvoices.wixsite.com/london"
-              target="_blank"
-              rel="noopener"
-            >
-              Children with Voices
-            </a>{" "}
-            runs three food hubs across East London, which are open to
-            everybody.
+            Children with Voices runs {printNumber(locations.length)} food hubs
+            across East London, which are open to everybody.{" "}
+            <Link href="/about">Find out more</Link>.
           </p>
         </div>
       </div>

@@ -3,6 +3,8 @@ import Page from "../components/page";
 import Link from "next/link";
 import { locations } from "../data/locations";
 import { printNumber } from "../utils/formatting";
+import Stack from "../components/stack";
+import ImageCard from "../components/image-card";
 
 const AboutPage: FunctionComponent<{}> = ({}) => {
   return (
@@ -33,6 +35,31 @@ const AboutPage: FunctionComponent<{}> = ({}) => {
         </a>
         .
       </p>
+      <div className="images">
+        <Stack spacing="24px" minWidth="250px">
+          <ImageCard
+            url="/images/food-at-door.jpg"
+            alt="A box of food outside a door"
+          />
+          <ImageCard url="/images/food-boxes.jpg" alt="A stack of food boxes" />
+          <ImageCard
+            url="/images/food-boxes-2.jpg"
+            alt="Boxes container vegetables, milk, bread, juice"
+          />
+          <ImageCard
+            url="/images/food-in-car.jpg"
+            alt="Boxes of food being donated"
+          />
+          <ImageCard
+            url="/images/volunteer.jpg"
+            alt="One of our volunteers donating food"
+          />
+          <ImageCard
+            url="/images/volunteers.jpg"
+            alt="Some of our volunteers posing for a photograph"
+          />
+        </Stack>
+      </div>
       <style jsx>{`
         .illustration {
           margin-top: 16px;
@@ -46,6 +73,10 @@ const AboutPage: FunctionComponent<{}> = ({}) => {
 
         p {
           line-height: 1.4em;
+        }
+
+        .images {
+          margin-top: 32px;
         }
       `}</style>
     </Page>

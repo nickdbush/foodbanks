@@ -53,7 +53,9 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
         </div>
       </div>
       <div className="bottom">
-        <Stack spacing="24px">{cards}</Stack>
+        <Stack spacing="24px" minWidth="300px">
+          {cards}
+        </Stack>
         <p className="attribution">Maps © Google {new Date().getFullYear()}</p>
       </div>
 

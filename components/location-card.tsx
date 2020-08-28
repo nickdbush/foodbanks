@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { RiDirectionLine, RiShareLine } from "react-icons/ri";
+import { FunctionComponent, useState } from "react";
+import { RiDirectionLine, RiShareLine, RiFileCopyLine } from "react-icons/ri";
 import { makeDirectionsUrl, makeMapUrl } from "../utils/map";
 import { minCardWidth } from "./stack";
 import { interleave } from "../utils/interleave";
@@ -56,7 +56,6 @@ const LocationCard: FunctionComponent<{
   coordinates: [number, number];
   times: string[];
 }> = ({ name, address, children, mapImage, coordinates, times }) => {
-  const canShare = typeof window != "undefined" && "share" in window.navigator;
   const openMap = () => {
     const url = makeMapUrl(coordinates);
     window.open(url, "_blank");
@@ -65,14 +64,27 @@ const LocationCard: FunctionComponent<{
     const url = makeDirectionsUrl(coordinates);
     window.open(url, "_blank");
   };
+
+  const shareText = `Community food hub at ${name}
+${address.split(", ").join(",\n")}
+
+Open ${times.join(" and ")}`;
+
+  const canShare = typeof window != "undefined" && "share" in window.navigator;
   const share = () => {
     navigator.share({
       url: window.location.href,
       title: `${name} community food hub`,
-      text: `Community food hub at ${name}\n${address
-        .split(", ")
-        .join(",\n")}\n\n`,
+      text: shareText,
     });
+  };
+
+  const canCopy =
+    typeof window != "undefined" && "clipboard" in window.navigator;
+  const [hasCopied, setCopied] = useState(false);
+  const copy = async () => {
+    await navigator.clipboard.writeText(shareText);
+    setCopied(true);
   };
   const timeText =
     times &&
@@ -109,6 +121,11 @@ const LocationCard: FunctionComponent<{
           {canShare && (
             <CardButton icon={<RiShareLine />} onClick={share}>
               Share
+            </CardButton>
+          )}
+          {!canShare && canCopy && (
+            <CardButton icon={<RiFileCopyLine />} onClick={copy}>
+              {hasCopied ? "Copied" : "Copy"}
             </CardButton>
           )}
         </div>

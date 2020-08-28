@@ -26,14 +26,26 @@ const AboutPage: FunctionComponent<{}> = ({}) => {
         <a href="https://www.instagram.com/community_food_hub/" target="_blank">
           @community_food_hub
         </a>
-        , for all the latest updates.
+        , for all the latest updates. You can help out too — drop us a message
+        on Insta and we'll get back to you.
+      </p>
+      <p>
+        We're supported by some fantastic partners, specifically Tesco,
+        Planzheros and the Felix project. Without their help we would not be
+        able to provide the healthy food, fresh fruit and nutritious vegetables
+        to our community for free. It's not just companies though: we are
+        indebted to all of our friends who donate whatever they can.
       </p>
       <p>
         The community food hub project is run by the non-profit organisation{" "}
         <a href="https://childrenwithvoices.wixsite.com/london" target="_blank">
           Children with Voices
         </a>
-        .
+        . We run projects for young people across Hackney, teaching life skills
+        like cooking, healthy eating, exercise and community building. We
+        believe that learning these things at an early age helps children to
+        navigate growing up, especially for people in areas that have long been
+        ignored by traditional educational programmes.
       </p>
       <div className="images">
         <Stack spacing="24px" minWidth="250px">
@@ -60,10 +72,18 @@ const AboutPage: FunctionComponent<{}> = ({}) => {
           />
         </Stack>
       </div>
+      <h1 style={{ marginBottom: "0" }}>Press</h1>
+      <p>
+        <a href="https://www.theguardian.com/society/2020/may/03/exclusive-fifth-of-uk-homes-children-hungry-lockdown">
+          Exclusive: almost a fifth of UK homes with children go hungry in
+          lockdown <em>(The Guardian)</em>
+        </a>
+      </p>
       <style jsx>{`
         .illustration {
           margin-top: 16px;
           max-width: 350px;
+          cursor: pointer;
         }
 
         h1,
@@ -76,7 +96,7 @@ const AboutPage: FunctionComponent<{}> = ({}) => {
         }
 
         .images {
-          margin-top: 32px;
+          margin: 32px 0;
         }
       `}</style>
     </Page>

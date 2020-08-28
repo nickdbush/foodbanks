@@ -5,15 +5,9 @@ import Page from "../components/page";
 import Stack from "../components/stack";
 import Link from "next/link";
 import { printNumber } from "../utils/formatting";
+import { interleave } from "../utils/interleave";
 
-function interleave(array: any[], x: (i: number) => any): any[] {
-  const output = [];
-  for (let i = 0; i < array.length; i++) {
-    output.push(array[i]);
-    if (i < array.length - 1) output.push(x(i));
-  }
-  return output;
-}
+const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const IndexPage: FunctionComponent<{}> = ({}) => {
   const cards = locations.map((location) => {
@@ -25,6 +19,24 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
         <Fragment key={[i, j].join()}>&nbsp;</Fragment>
       ))
     );
+    const times = location.openingTimes.map((time) => {
+      const day = daysOfWeek[time.day];
+      const [openingTime, closingTime] = [time.opens, time.closes].map(
+        (time) => {
+          let [hours, minutes] = time.split(":").map((text) => parseInt(text));
+          let period = "am";
+          if (hours > 12) {
+            period = "pm";
+            hours -= 12;
+          }
+          return (
+            [hours, minutes != 0 && minutes].filter((x) => !!x).join(".") +
+            period
+          );
+        }
+      );
+      return `${day} ${openingTime} – ${closingTime}`;
+    });
     const address = interleave(addressParts, () => ", ");
     return (
       <LocationCard
@@ -33,6 +45,7 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
         address={[location.address, location.postcode].join(", ")}
         mapImage={location.mapImage}
         coordinates={location.coordinates}
+        times={times}
       >
         {address}
       </LocationCard>

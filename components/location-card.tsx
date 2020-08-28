@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import { RiDirectionLine, RiShareLine } from "react-icons/ri";
 import { makeDirectionsUrl, makeMapUrl } from "../utils/map";
 import { minCardWidth } from "./stack";
+import { interleave } from "../utils/interleave";
 
 export const mapHeight = 250;
 
@@ -53,7 +54,8 @@ const LocationCard: FunctionComponent<{
   name: string;
   address: string;
   coordinates: [number, number];
-}> = ({ name, address, children, mapImage, coordinates }) => {
+  times: string[];
+}> = ({ name, address, children, mapImage, coordinates, times }) => {
   const canShare = typeof window != "undefined" && "share" in window.navigator;
   const openMap = () => {
     const url = makeMapUrl(coordinates);
@@ -72,6 +74,14 @@ const LocationCard: FunctionComponent<{
         .join(",\n")}\n\n`,
     });
   };
+  const timeText =
+    times &&
+    interleave(
+      times.map((time) =>
+        interleave(time.split(" "), (i) => <span key={i + "br"}>&nbsp;</span>)
+      ),
+      (i) => <span key={i + "sep"}>, </span>
+    );
   return (
     <div className="container">
       <div className="shadow"></div>
@@ -90,6 +100,7 @@ const LocationCard: FunctionComponent<{
         <div className="body">
           <div className="name">{name}</div>
           <div className="address">{children}</div>
+          {times && <div className="times">{timeText}</div>}
         </div>
         <div className="buttons">
           <CardButton icon={<RiDirectionLine />} onClick={openDirections}>
@@ -100,9 +111,6 @@ const LocationCard: FunctionComponent<{
               Share
             </CardButton>
           )}
-          <CardButton icon={<RiShareLine />} onClick={share}>
-            Share
-          </CardButton>
         </div>
       </div>
       <style jsx>{`
@@ -196,6 +204,10 @@ const LocationCard: FunctionComponent<{
           font-size: 1.3rem;
           font-weight: bold;
           margin-bottom: 3px;
+        }
+
+        .times {
+          margin-top: 16px;
         }
 
         .buttons {

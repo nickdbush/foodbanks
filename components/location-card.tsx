@@ -25,6 +25,12 @@ const CardButton: FunctionComponent<{ icon: any; onClick: () => void }> = ({
           align-items: center;
           justify-content: center;
           cursor: pointer;
+          background-color: white;
+          transition: background-color 150ms ease;
+        }
+
+        .container:hover {
+          background-color: #f5f5f5;
         }
 
         .icon {
@@ -70,18 +76,17 @@ const LocationCard: FunctionComponent<{
     <div className="container">
       <div className="shadow"></div>
       <div className="content">
-        <div className="map-container">
+        <div className="map-container" onClick={openMap}>
           <img
             srcSet={`${mapImage}.png 1x, ${mapImage}-2x.png 2x`}
             className="map"
-            onClick={openMap}
             width={minCardWidth * 2}
             height={mapHeight}
           />
+          <div className="map-hover">
+            <p>Open map</p>
+          </div>
         </div>
-        {/* <Chip colour={isOpen ? "green" : "grey"}>
-        {isOpen ? "Open" : "Closed"}
-      </Chip> */}
         <div className="body">
           <div className="name">{name}</div>
           <div className="address">{children}</div>
@@ -95,6 +100,9 @@ const LocationCard: FunctionComponent<{
               Share
             </CardButton>
           )}
+          <CardButton icon={<RiShareLine />} onClick={share}>
+            Share
+          </CardButton>
         </div>
       </div>
       <style jsx>{`
@@ -130,10 +138,42 @@ const LocationCard: FunctionComponent<{
 
         .map-container {
           height: ${mapHeight}px;
+          position: relative;
           overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .map-container:hover .map-hover {
+          transform: scale(1);
+          opacity: 1;
+          transition: transform 150ms cubic-bezier(0.17, 0.84, 0.44, 1),
+            opacity 150ms ease;
+        }
+
+        .map-hover {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background-color: rgba(0, 0, 0, 0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: scale(0);
+          opacity: 0;
+          transition: transform 150ms cubic-bezier(0.9, 0.03, 0.69, 0.22),
+            opacity 150ms ease;
+          color: white;
+          text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.45);
+          pointer-events: none;
+          font-weight: bold;
+        }
+
+        .map-container:hover .map {
+          filter: blur(1px) brightness(95%);
         }
 
         .map {
@@ -163,7 +203,7 @@ const LocationCard: FunctionComponent<{
           flex-direction: row;
         }
 
-        .buttons .button:not(:last-of-type) {
+        .buttons > :global(div):not(:last-of-type) {
           border-right: 1px solid var(--border-colour);
         }
       `}</style>

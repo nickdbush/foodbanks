@@ -1,16 +1,18 @@
+const numbers = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+];
+
 export function printNumber(n: number): string {
-  if (n > 10) return n.toLocaleString();
-  return [
-    "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
-  ][n];
+  if (n >= numbers.length) return n.toLocaleString();
+  return numbers[n];
 }

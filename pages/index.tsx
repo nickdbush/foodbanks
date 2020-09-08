@@ -61,7 +61,10 @@ const IndexPage: FunctionComponent<{}> = ({}) => {
           <p>
             Children with Voices runs {printNumber(locations.length)} food hubs
             across East London, which are open to everybody.{" "}
-            <Link href="/about">Find out more</Link>.
+            <Link href="/about">
+              <a>Find out more</a>
+            </Link>
+            .
           </p>
         </div>
       </div>
